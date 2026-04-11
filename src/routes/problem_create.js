@@ -1,0 +1,14 @@
+const express = require("express")
+const problemRouter = express.Router();
+const adminMiddleware = require("../middleWare/adminMiddleWare")
+
+
+
+problemRouter.post("/create", adminMiddleware, createProblem)
+problemRouter.patch("/:id", updateProblem)
+problemRouter.delete("/:id", DeleteProblem)
+
+
+problemRouter.get("/:id", getProblemById)
+problemRouter.get("/", getAllProblem)
+problemRouter.get("/user", solvedAllProblemByUser)

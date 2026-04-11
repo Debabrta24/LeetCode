@@ -3,19 +3,19 @@ const { Schema } = mongoose
 const userSchema = new Schema({
     firstName: {
         type: String,
-        require: true,
-        minLgth: 3,
+        required: true,
+        minLgth: 2,
         MaxLength: 20
     },
     lastName: {
         type: String,
-        require: true,
+        required: true,
         minLgth: 3,
         MaxLength: 20
     },
     emailId: {
         type: String,
-        require: true,
+        required: true,
         unique: true,
         trim: true,
         lowercase: true,
@@ -31,10 +31,18 @@ const userSchema = new Schema({
         enum: ['user', 'admin'],
         default: 'user'
     },
-    problemSolved:{
-        type:[String]
+    problemSolved: {
+        type: [String]
+    },
+    password:{
+        type:String,
+        required:true
+
     }
 
-},{
-    timestamps:true
+}, {
+    timestamps: true
 })
+
+const User = mongoose.model("user", userSchema);
+module.exports = User;
